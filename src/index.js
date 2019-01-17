@@ -60,6 +60,10 @@ export default class StickyBox extends React.Component {
   registerContainerRef = n => {
     if (!stickyProp) return;
     this.node = n;
+  }
+
+  componentDidMount() {
+    const n = this.node;
     if (n) {
       this.scrollPane = getScrollParent(this.node);
       this.latestScrollY = this.scrollPane === window ? window.scrollY : this.scrollPane.scrollTop;
@@ -95,7 +99,7 @@ export default class StickyBox extends React.Component {
       this.ron.disconnect();
       this.scrollPane = null;
     }
-  };
+  }
 
   changeMode(newMode) {
     const {onChangeMode, offsetTop, offsetBottom} = this.props;
